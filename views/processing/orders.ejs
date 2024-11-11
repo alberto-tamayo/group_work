@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Order Management</h1>
+    </header>
+    <section>
+        <h2>Orders</h2>
+        <ul>
+            <% orders.forEach(order => { %>
+                <li>
+                    <h3>Order ID: <%= order._id %></h3>
+                    <p>Customer: <%= order.customerName %></p>
+                    <p>Address: <%= order.deliveryAddress %></p>
+                    <p>Items Ordered: <%= order.itemsOrdered.length %></p>
+                    <p>Status: <%= order.status %></p>
+                    <form action="/processing/updateOrder" method="POST">
+                        <input type="hidden" name="orderId" value="<%= order._id %>">
+                        <label for="status">Update Status:</label>
+                        <select name="status">
+                            <option value="RECEIVED">RECEIVED</option>
+                            <option value="READY FOR DELIVERY">READY FOR DELIVERY</option>
+                            <option value="IN TRANSIT">IN TRANSIT</option>
+                            <option value="DELIVERED">DELIVERED</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </section>
+</body>
+</html>

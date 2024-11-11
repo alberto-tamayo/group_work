@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Registration</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Register as a Delivery Driver</h1>
+    </header>
+    <section>
+        <form action="/driver/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="vehicleModel">Vehicle Model:</label>
+            <input type="text" id="vehicleModel" name="vehicleModel" required>
+
+            <label for="color">Vehicle Color:</label>
+            <input type="text" id="color" name="color" required>
+
+            <label for="licensePlate">License Plate:</label>
+            <input type="text" id="licensePlate" name="licensePlate" required>
+
+            <button type="submit">Register</button>
+        </form>
+    </section>
+</body>
+</html>

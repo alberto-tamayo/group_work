@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Delivery Management</h1>
+    </header>
+    <section>
+        <h2>Orders Ready for Delivery</h2>
+        <ul>
+            <% deliveries.forEach(delivery => { %>
+                <li>
+                    <h3>Order ID: <%= delivery._id %></h3>
+                    <p>Customer: <%= delivery.customerName %></p>
+                    <p>Address: <%= delivery.deliveryAddress %></p>
+                    <form action="/driver/updateDeliveryStatus" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="orderId" value="<%= delivery._id %>">
+                        <label for="status">Status:</label>
+                        <select name="status">
+                            <option value="IN TRANSIT">IN TRANSIT</option>
+                            <option value="DELIVERED">DELIVERED</option>
+                        </select>
+                        <label for="photo">Delivery Photo:</label>
+                        <input type="file" name="photo" accept="image/*">
+                        <button type="submit">Update Status</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </section>
+</body>
+</html>
